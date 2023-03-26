@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const express = require('express');
-
+const PORT = process.env.PORT || 5000 // utiliser le port spécifié dans les variables d'environnement ou le port 5000 par défaut
 const today = new Date();
 const day = today.getDate().toString().padStart(2, '0');
 const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -16,7 +16,9 @@ const app = express();
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
+app.listen(PORT, () => {
+  console.log(`Le serveur est démarré sur le port ${PORT}`)
+})
 const certificats=[
 {
 "Temps restant": "17j",

@@ -185,4 +185,4 @@ const bccRecipients = ['zolalaina.andrianantenaina@orange.com'];
     console.log('Running cron job...');
     sendEmail(certificats, domaines);
   });
-  module.exports = app;
+

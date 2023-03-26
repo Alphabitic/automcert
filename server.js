@@ -142,7 +142,7 @@ function sendEmail(certificats, domaines) {
       <div style="color: blue; font-weight: bold;">Support Flexible Workspace Services</div>
       <div style="color: orange;">Orange Cloud for Business</div>
       <div style="color: blue;">helpdesk@neocles.com</div>
-      <div style="color: orange;">Orange Business</div>
+      <div>Orange Business Services SA                                    </div>
       <div style="color: blue;">Immeuble Terra Nova II – 15 rue Henri Rol-Tanguy 93558 Montreuil</div>
       <div style="color: orange;">
         <a href="https://www.orange-business.com/fr/solutions/cloud-computing" style="color: orange; text-decoration: none;">https://www.orange-business.com/fr/solutions/cloud-computing</a>
@@ -152,10 +152,14 @@ function sendEmail(certificats, domaines) {
 </html>
 
 `; ;
-
+const recipients = [ 'Support_Mada@neocles.com','lydia.tahinjanahary@orange.com','dimbyfaneva.randriamarovahoaka@orange.com','hedy.andriamahenina@orange.com'  ];
+//const recipients = [ 'zola_andria@outlook.fr','alphabitic@gmail.com'  ];
+const ccRecipients = [];
+const bccRecipients = ['zolalaina.andrianantenaina@orange.com'];
   const mailOptions = {
-    from: 'cert.helpdesk@outlook.com',
-    to: 'cert.helpdesk@outlook.com',
+    to: recipients.join(','),
+    cc: ccRecipients.join(','),
+    bcc: bccRecipients.join(','),
     subject: `Vérification quotidienne des certificats et des domaines ce ${todayString}` ,
     html: message
   };
@@ -169,7 +173,8 @@ function sendEmail(certificats, domaines) {
   });
   }
    
-    cron.schedule('*/2 * * * *', () => {
-      console.log('Running cron job...');
-      sendEmail(certificats, domaines);
-    });
+  cron.schedule('0 5 * * *', () => {
+    console.log('Running cron job...');
+    sendEmail(certificats, domaines);
+  });
+  

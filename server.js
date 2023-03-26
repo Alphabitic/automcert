@@ -1,5 +1,7 @@
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
+
 const today = new Date();
 const day = today.getDate().toString().padStart(2, '0');
 const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -52,7 +54,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: "cert.helpdesk@outlook.com",
-    pass: "vcyukwfypeuyymwd",
+    pass: process.env.OUTLOOK_PWD,
   }
 });
 

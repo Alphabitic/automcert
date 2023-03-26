@@ -1,6 +1,7 @@
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const express = require('express');
 
 const today = new Date();
 const day = today.getDate().toString().padStart(2, '0');
@@ -8,6 +9,13 @@ const month = (today.getMonth() + 1).toString().padStart(2, '0');
 const year = today.getFullYear().toString();
 const todayString = `${day}/${month}/${year}`;
 console.log(todayString);
+
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 const certificats=[
 {
@@ -177,4 +185,4 @@ const bccRecipients = ['zolalaina.andrianantenaina@orange.com'];
     console.log('Running cron job...');
     sendEmail(certificats, domaines);
   });
-  
+  module.exports = app;

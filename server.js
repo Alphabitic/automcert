@@ -1133,7 +1133,7 @@ const bccRecipients = ['zolalaina.andrianantenaina@orange.com'];
   });
   }
    
-  cron.schedule('0 5 * * *', () => {
+  cron.schedule('30 6 * * *', () => {
     console.log('Running cron job...');
     sendEmail(certificats, domaines);
   });
